@@ -26,12 +26,12 @@ bun run build           # génère le registre et construit le site statique
 Dans un projet Svelte avec Tailwind CSS 4 et shadcn-svelte initialisé (`bunx shadcn-svelte@latest init`) :
 
 ```bash
-bunx shadcn-svelte@latest add https://frflo.github.io/common-ui/r/common-button.json
-bunx shadcn-svelte@latest add https://frflo.github.io/common-ui/r/common-badge.json
-bunx shadcn-svelte@latest add https://frflo.github.io/common-ui/r/common-card.json
+bunx shadcn-svelte@latest add https://VOTRE-WORKER.workers.dev/r/common-button.json
+bunx shadcn-svelte@latest add https://VOTRE-WORKER.workers.dev/r/common-badge.json
+bunx shadcn-svelte@latest add https://VOTRE-WORKER.workers.dev/r/common-card.json
 ```
 
-Le site doit d'abord être publié par GitHub Pages. Pour tester localement, lancez `bun run build:registry` puis `bun run dev` dans ce projet et remplacez le domaine par `http://localhost:5173`.
+Le site doit d'abord être publié sur Cloudflare Workers. Remplacez `VOTRE-WORKER.workers.dev` par l’adresse réelle de votre Worker. Pour tester localement, lancez `bun run build:registry` puis `bun run dev` dans ce projet et remplacez le domaine par `http://localhost:5173`.
 
 Avec les alias par défaut de SvelteKit récents, un exemple d'utilisation après installation est :
 
@@ -66,8 +66,17 @@ Le fichier `src/routes/layout.css` donne un exemple de déclaration `@theme inli
 
 Les fichiers JSON produits contiennent le code source. Les changements ultérieurs ne mettent pas automatiquement à jour les copies déjà installées.
 
-## Publication
+## Publication sur Cloudflare Workers
 
-Le workflow GitHub Actions vérifie le projet, construit le registre et déploie le site sur GitHub Pages depuis `main`. Pour changer de propriétaire ou de nom de dépôt, adaptez `homepage` dans `registry.json`, les URL ci-dessus et `PAGES_BASE` dans le workflow.
+Le projet utilise un Worker de fichiers statiques : `bun run build` génère le site et le registre dans `build/`, puis Wrangler les publie à partir de `wrangler.jsonc`.
+
+```bash
+bunx wrangler login
+bun run deploy
+```
+
+Wrangler affichera l’adresse `workers.dev` réelle. Utilisez-la pour installer les composants. Pour un domaine personnalisé, configurez-le dans Cloudflare et utilisez son adresse à la place. Pour déployer automatiquement à chaque push, connectez le dépôt à Cloudflare Workers Builds : commande de build `bun install --frozen-lockfile && bun run build`, commande de déploiement `bunx wrangler deploy`. Le workflow GitHub sert uniquement aux vérifications et ne déploie pas le site.
+
+Le champ `homepage` de `registry.json` pointe vers le dépôt ; il peut être remplacé par l’URL du site lorsque celle-ci est connue.
 
 Licence MIT : voir [LICENSE](LICENSE).

@@ -6,7 +6,6 @@ import { defineConfig } from 'vite';
 export default defineConfig({
   plugins: [tailwindcss(), sveltekit({
     adapter: adapter(),
-    paths: { base: process.env.PAGES_BASE === '/common-ui' ? '/common-ui' : '' },
     compilerOptions: { runes: ({ filename }) => filename.split(/[/\\]/).includes('node_modules') ? undefined : true }
   })]
 });
