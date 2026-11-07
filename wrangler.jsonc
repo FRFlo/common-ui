@@ -2,6 +2,7 @@
   "$schema": "node_modules/wrangler/config-schema.json",
   "name": "common-ui",
   "compatibility_date": "2026-11-07",
+  "routes": [{ "pattern": "ui.frflo.ovh", "custom_domain": true }],
   "assets": {
     "directory": "./build"
   }
