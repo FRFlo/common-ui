@@ -1,31 +1,37 @@
-<script lang="ts">
-  import Button from '../lib/registry/components/common-button/common-button.svelte';
-  import Badge from '../lib/registry/components/common-badge/common-badge.svelte';
-  import Card from '../lib/registry/components/common-card/common-card.svelte';
-  let theme = $state<'default' | 'ocean'>('default');
-</script>
+<svelte:head>
+  <title>Common UI — composants Svelte</title>
+  <meta name="description" content="Une collection de composants Svelte conçus pour s’adapter au thème de vos projets." />
+</svelte:head>
 
-<svelte:head><title>Common UI — des composants à votre image</title><meta name="description" content="Un registre Svelte de composants adaptés à votre thème." /></svelte:head>
-<div class:ocean={theme === 'ocean'} class="min-h-screen bg-background text-foreground">
-  <header class="mx-auto flex max-w-6xl items-center justify-between border-b border-border px-6 py-5">
-    <a href="./" class="text-lg font-bold tracking-tight">◈ Common UI</a>
-    <span class="text-sm text-muted-foreground">Svelte · Tailwind CSS · shadcn-svelte</span>
+<div class="page">
+  <header class="header shell">
+    <a class="brand" href="/" aria-label="Common UI, accueil"><span class="brand-mark" aria-hidden="true">✳</span> Common UI</a>
+    <a class="header-link" href="https://github.com/FRFlo/common-ui">GitHub <span aria-hidden="true">↗</span></a>
   </header>
-  <main class="mx-auto max-w-6xl px-6 py-16 sm:py-24">
-    <div class="max-w-3xl">
-      <Badge variant="outline">Un registre à personnaliser</Badge>
-      <h1 class="mt-6 text-5xl font-semibold tracking-tight sm:text-6xl">Vos composants.<br />Vos couleurs.</h1>
-      <p class="mt-6 max-w-2xl text-lg leading-8 text-muted-foreground">Une base de composants Svelte qui s’adapte aux variables de thème de chacun de vos projets.</p>
-      <div class="mt-8 flex flex-wrap gap-3"><Button onclick={() => document.getElementById('composants')?.scrollIntoView({ behavior: 'smooth' })}>Explorer les composants ↓</Button><Button variant="outline" onclick={() => theme = theme === 'default' ? 'ocean' : 'default'}>Changer le thème de démo</Button></div>
-    </div>
-    <div id="composants" class="mt-24 scroll-mt-8">
-      <div class="mb-8 flex flex-wrap items-end justify-between gap-4"><div><p class="text-sm font-medium text-muted-foreground">01 / LES FONDATIONS</p><h2 class="mt-2 text-3xl font-semibold tracking-tight">Premiers composants</h2></div><p class="text-sm text-muted-foreground">Trois points de départ, une infinité de thèmes.</p></div>
-      <div class="grid gap-4 md:grid-cols-3">
-        <Card><p class="text-sm text-muted-foreground">01 — ACTION</p><h3 class="mt-4 text-xl font-semibold">Bouton</h3><p class="mt-2 text-sm text-muted-foreground">Une action claire, en plusieurs variantes.</p><div class="mt-8 flex flex-wrap gap-2"><Button size="sm">Continuer</Button><Button variant="outline" size="sm">Annuler</Button></div><code class="mt-6 block text-xs text-muted-foreground">common-button</code></Card>
-        <Card><p class="text-sm text-muted-foreground">02 — ÉTAT</p><h3 class="mt-4 text-xl font-semibold">Badge</h3><p class="mt-2 text-sm text-muted-foreground">Un indicateur compact pour vos contenus.</p><div class="mt-8 flex flex-wrap gap-2"><Badge variant="primary">Nouveau</Badge><Badge>En cours</Badge><Badge variant="outline">Brouillon</Badge></div><code class="mt-6 block text-xs text-muted-foreground">common-badge</code></Card>
-        <Card><p class="text-sm text-muted-foreground">03 — CONTENU</p><h3 class="mt-4 text-xl font-semibold">Carte</h3><p class="mt-2 text-sm text-muted-foreground">Une surface simple pour organiser vos idées.</p><div class="mt-8 rounded-lg border border-border bg-muted p-4 text-sm">Une carte, votre contenu.</div><code class="mt-6 block text-xs text-muted-foreground">common-card</code></Card>
+
+  <main class="shell">
+    <section class="hero" aria-labelledby="title">
+      <div class="eyebrow"><span></span> UNE LIBRAIRIE EN CONSTRUCTION</div>
+      <h1 id="title">Des composants.<br /><em>Votre identité.</em></h1>
+      <p class="intro">Des composants Svelte complexes et des adaptations de shadcn-svelte, pensés pour vos projets et leurs couleurs.</p>
+      <div class="actions">
+        <a class="primary-link" href="#collection">Découvrir la collection <span aria-hidden="true">↘</span></a>
+        <a class="secondary-link" href="https://github.com/FRFlo/common-ui">Voir le projet <span aria-hidden="true">↗</span></a>
       </div>
-    </div>
-    <div class="mt-20 border-t border-border pt-8 text-sm leading-7 text-muted-foreground">Les couleurs proviennent du thème du projet. Consultez le README pour installer les composants et configurer vos variables.</div>
+    </section>
+
+    <section class="collection" id="collection" aria-labelledby="collection-title">
+      <div class="section-heading"><div><span class="section-label">LA COLLECTION</span><h2 id="collection-title">À construire ensemble.</h2></div><span class="count">00 / COMPOSANTS</span></div>
+      <div class="empty-state">
+        <div class="empty-icon" aria-hidden="true"><span>+</span></div>
+        <div><h3>Tout commence ici.</h3><p>La collection est encore vide. Les prochains composants prendront place ici au fil du projet.</p></div>
+      </div>
+    </section>
+    <section class="principles" aria-label="Principes de la bibliothèque">
+      <div><span>01</span><h3>Conçus pour Svelte</h3><p>Des interfaces complexes pensées pour les besoins de vos projets.</p></div>
+      <div><span>02</span><h3>Adaptés à votre thème</h3><p>Les couleurs suivent les variables Tailwind CSS de vos projets.</p></div>
+      <div><span>03</span><h3>Pensés pour vos besoins</h3><p>Adaptez les composants shadcn-svelte à votre façon de travailler.</p></div>
+    </section>
   </main>
+  <footer class="shell footer"><span>✳ &nbsp; Common UI</span><span>Svelte · Tailwind CSS · shadcn-svelte</span><a href="https://github.com/FRFlo/common-ui">GitHub ↗</a></footer>
 </div>

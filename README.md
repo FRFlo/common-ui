@@ -1,82 +1,41 @@
 # Common UI
 
-Un registre public de composants Svelte à copier dans ses projets avec shadcn-svelte. Les composants utilisent les couleurs sémantiques du projet qui les accueille : changez son thème CSS et ils changent avec lui.
+Un registre public pour créer des composants Svelte complexes et adapter ceux de shadcn-svelte aux besoins de nos projets. Les composants sont installés avec shadcn-svelte et utilisent les variables Tailwind CSS du projet qui les accueille.
 
-**Common UI est un nom provisoire.** Le projet commence avec un bouton, un badge et une carte ; leur code est modifiable après installation.
+La collection est actuellement vide. Le projet fournit la structure nécessaire pour créer les premiers composants et les publier sur [ui.frflo.ovh](https://ui.frflo.ovh).
 
 ## Développer
 
-Prérequis : Bun et Node.js. Depuis ce dossier :
+Prérequis : Bun et Node.js.
 
 ```bash
 bun install
 bun run dev
 ```
 
-La page d'accueil présente les composants et permet de basculer entre deux thèmes de démonstration. Les commandes utiles :
-
 ```bash
 bun run check           # vérification Svelte et TypeScript
-bun run build:registry  # génération des fichiers static/r/*.json
-bun run build           # génère le registre et construit le site statique
+bun run build:registry  # génération du registre dans static/r
+bun run build           # génération du registre et du site statique
 ```
-
-## Installer un composant
-
-Dans un projet Svelte avec Tailwind CSS 4 et shadcn-svelte initialisé (`bunx shadcn-svelte@latest init`) :
-
-```bash
-bunx shadcn-svelte@latest add https://ui.frflo.ovh/r/common-button.json
-bunx shadcn-svelte@latest add https://ui.frflo.ovh/r/common-badge.json
-bunx shadcn-svelte@latest add https://ui.frflo.ovh/r/common-card.json
-```
-
-Le registre est publié sur Cloudflare Workers. Pour tester localement, lancez `bun run build:registry` puis `bun run dev` dans ce projet et remplacez le domaine par `http://localhost:5173`.
-
-Avec les alias par défaut de SvelteKit récents, un exemple d'utilisation après installation est :
-
-```svelte
-<script lang="ts">
-  import Button from '#lib/components/common-button/common-button.svelte';
-  import Badge from '#lib/components/common-badge/common-badge.svelte';
-  import Card from '#lib/components/common-card/common-card.svelte';
-</script>
-
-<Card>
-  <Badge>Nouveau</Badge>
-  <h2>Mon projet</h2>
-  <Button onclick={() => alert('Bonjour !')}>Continuer</Button>
-</Card>
-```
-
-Le chemin dépend de vos alias `components.json`. Le bouton accepte les variantes `primary`, `secondary`, `outline`, `ghost` et les tailles `sm`, `md`, `lg`. Le badge accepte `primary`, `secondary`, `outline`. Les attributs HTML et les classes supplémentaires sont transmis aux éléments ; en cas de classes Tailwind contradictoires, préférez modifier le code copié ou les variantes.
-
-## Contrat de thème
-
-Les composants utilisent les classes Tailwind correspondant aux couleurs `background`, `foreground`, `primary`, `primary-foreground`, `secondary`, `secondary-foreground`, `accent`, `accent-foreground`, `card`, `card-foreground`, `border` et `ring`. Ces couleurs doivent exister dans le thème Tailwind du projet consommateur. L'initialisation shadcn-svelte les fournit normalement ; ce ne sont pas des couleurs intégrées à Tailwind par défaut. Les composants ne modifient pas les variables du projet à l'installation.
-
-Le fichier `src/routes/layout.css` donne un exemple de déclaration `@theme inline`, de variables claires et sombres, ainsi qu'un thème de démonstration. Il appartient au site de ce dépôt : adaptez les valeurs au CSS de chaque projet.
 
 ## Ajouter un composant
 
 1. Créez son dossier dans `src/lib/registry/components/`.
 2. Ajoutez une entrée dans `registry.json` : fichiers, dépendances npm (`dependencies`) et autres composants (`registryDependencies`).
-3. Lancez `bun run build:registry`, puis testez l'installation dans un projet distinct.
-4. Ajoutez une démonstration et documentez les variables de thème nécessaires.
+3. Utilisez les couleurs sémantiques Tailwind du projet consommateur et documentez les variables nécessaires : elles ne sont pas toutes fournies par Tailwind par défaut.
+4. Lancez `bun run build:registry`, puis testez l'installation depuis un projet Svelte distinct initialisé avec shadcn-svelte.
+5. Ajoutez une présentation du composant sur le site.
 
-Les fichiers JSON produits contiennent le code source. Les changements ultérieurs ne mettent pas automatiquement à jour les copies déjà installées.
+Les fichiers JSON produits contiennent le code source. Les changements ultérieurs ne mettent pas automatiquement à jour les copies déjà installées. Documentation : [registres shadcn-svelte](https://www.shadcn-svelte.com/docs/registry/getting-started).
 
 ## Publication sur Cloudflare Workers
-
-Le projet utilise un Worker de fichiers statiques : `bun run build` génère le site et le registre dans `build/`, puis Wrangler les publie à partir de `wrangler.jsonc`.
 
 ```bash
 bunx wrangler login
 bun run deploy
 ```
 
-Wrangler affichera l’adresse `workers.dev` réelle. Utilisez-la pour installer les composants. Pour un domaine personnalisé, configurez-le dans Cloudflare et utilisez son adresse à la place. Pour déployer automatiquement à chaque push, connectez le dépôt à Cloudflare Workers Builds : commande de build `bun install --frozen-lockfile && bun run build`, commande de déploiement `bunx wrangler deploy`. Le workflow GitHub sert uniquement aux vérifications et ne déploie pas le site.
-
-Le champ `homepage` de `registry.json` indique l’URL publique du site.
+La commande construit le site et le registre, puis les publie sur le Worker configuré dans `wrangler.jsonc`. Pour déployer automatiquement à chaque push, connectez le dépôt à Cloudflare Workers Builds : commande de build `bun install --frozen-lockfile && bun run build`, commande de déploiement `bunx wrangler deploy`. Le workflow GitHub sert aux vérifications uniquement.
 
 Licence MIT : voir [LICENSE](LICENSE).

@@ -2,45 +2,5 @@
   "$schema": "https://shadcn-svelte.com/schema/registry.json",
   "name": "common-ui",
   "homepage": "https://ui.frflo.ovh",
-  "items": [
-    {
-      "name": "common-button",
-      "type": "registry:component",
-      "title": "Common Button",
-      "description": "Bouton adaptable au thème du projet.",
-      "files": [
-        {
-          "path": "src/lib/registry/components/common-button/common-button.svelte",
-          "type": "registry:component"
-        }
-      ],
-      "registryDependencies": []
-    },
-    {
-      "name": "common-badge",
-      "type": "registry:component",
-      "title": "Common Badge",
-      "description": "Étiquette adaptable au thème du projet.",
-      "files": [
-        {
-          "path": "src/lib/registry/components/common-badge/common-badge.svelte",
-          "type": "registry:component"
-        }
-      ],
-      "registryDependencies": []
-    },
-    {
-      "name": "common-card",
-      "type": "registry:component",
-      "title": "Common Card",
-      "description": "Surface adaptable au thème du projet.",
-      "files": [
-        {
-          "path": "src/lib/registry/components/common-card/common-card.svelte",
-          "type": "registry:component"
-        }
-      ],
-      "registryDependencies": []
-    }
-  ]
+  "items": []
 }
