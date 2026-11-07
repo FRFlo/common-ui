@@ -1,0 +1,14 @@
+{
+	"$schema": "https://shadcn-svelte.com/schema/registry-item.json",
+	"name": "common-card",
+	"title": "Common Card",
+	"type": "registry:component",
+	"description": "Surface adaptable au thème du projet.",
+	"files": [
+		{
+			"content": "<script lang=\"ts\">\n  import type { Snippet } from 'svelte';\n  import type { HTMLAttributes } from 'svelte/elements';\n  type Props = HTMLAttributes<HTMLElement> & { children?: Snippet };\n  let { class: className = '', children, ...rest }: Props = $props();\n</script>\n<section class=\"rounded-xl border border-border bg-card p-6 text-card-foreground shadow-sm {className}\" {...rest}>{@render children?.()}</section>\n",
+			"type": "registry:component",
+			"target": "common-card.svelte"
+		}
+	]
+}
