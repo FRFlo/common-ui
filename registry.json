@@ -1,7 +1,7 @@
 {
   "$schema": "https://shadcn-svelte.com/schema/registry.json",
   "name": "common-ui",
-  "homepage": "https://github.com/FRFlo/common-ui",
+  "homepage": "https://common-ui.frflo.workers.dev",
   "items": [
     {
       "name": "common-button",
