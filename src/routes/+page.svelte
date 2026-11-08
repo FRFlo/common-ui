@@ -12,7 +12,7 @@
 	aria-label="Collection de composants"
 >
 	<section class="py-6" aria-labelledby="timeline-title">
-		<h1 id="timeline-title" class="text-3xl tracking-tight text-primary sm:text-4xl">Timeline</h1>
+		<h1 id="timeline-title" class="font-sans text-3xl font-semibold tracking-tight text-primary sm:text-4xl">Timeline</h1>
 		<h2 class="mt-6 mb-3 text-sm font-medium">Horizontale</h2>
 		<div class="w-full overflow-hidden rounded-xl border border-border bg-background">
 			<Timeline.Root aria-label="Prochains examens">
