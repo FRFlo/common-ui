@@ -1,6 +1,5 @@
 <script lang="ts">
 	import * as Timeline from "../lib/registry/components/timeline/index";
-
 </script>
 
 <svelte:head>
@@ -9,8 +8,9 @@
 </svelte:head>
 
 <main class="catalogue" aria-label="Collection de composants">
-	<section class="component" aria-labelledby="horizontal-title">
-		<h1 id="horizontal-title">Timeline horizontale</h1>
+	<section class="component" aria-labelledby="timeline-title">
+		<h1 id="timeline-title">Timeline</h1>
+		<h2>Horizontale</h2>
 		<div class="preview">
 			<Timeline.Root aria-label="Prochains examens">
 				<Timeline.Item class="w-24"><Timeline.Indicator active aria-hidden="true" /><Timeline.Content><Timeline.Title active>Maintenant</Timeline.Title></Timeline.Content></Timeline.Item>
@@ -23,10 +23,8 @@
 				<Timeline.Connector variant="trailing" />
 			</Timeline.Root>
 		</div>
-	</section>
 
-	<section class="component" aria-labelledby="vertical-title">
-		<h2 id="vertical-title">Timeline verticale</h2>
+		<h2>Verticale</h2>
 		<div class="preview vertical-preview">
 			<Timeline.Root orientation="vertical" aria-label="Étapes du projet">
 				<Timeline.Item><Timeline.Indicator active aria-hidden="true" /><Timeline.Content><Timeline.Title active>En cours</Timeline.Title></Timeline.Content></Timeline.Item>
