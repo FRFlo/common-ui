@@ -26,7 +26,7 @@
 			"target": "timeline/timeline-title.svelte"
 		},
 		{
-			"content": "<script lang=\"ts\">\n\timport type { Snippet } from \"svelte\";\n\tlet { children, subtle = false }: { children: Snippet; subtle?: boolean } = $props();\n</script>\n\n<span\n\tclass={subtle\n\t\t? \"mt-0.5 text-[10px] text-muted-foreground/70\"\n\t\t: \"mt-1 text-xs font-medium text-muted-foreground\"}>{@render children()}</span\n>\n",
+			"content": "<script lang=\"ts\">\n\timport type { Snippet } from \"svelte\";\n\tlet { children, subtle = false }: { children: Snippet; subtle?: boolean } = $props();\n</script>\n\n<span\n\tclass={subtle\n\t\t? \"mt-0.5 text-xs text-muted-foreground/70\"\n\t\t: \"mt-1 text-xs font-medium text-muted-foreground\"}>{@render children()}</span\n>\n",
 			"type": "registry:component",
 			"target": "timeline/timeline-description.svelte"
 		},

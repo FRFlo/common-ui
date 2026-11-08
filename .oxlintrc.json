@@ -1,7 +1,7 @@
 {
 	"$schema": "./node_modules/oxlint/configuration_schema.json",
 	"plugins": [],
-	"jsPlugins": ["eslint-plugin-svelte"],
+	"jsPlugins": ["eslint-plugin-svelte", "@shadcn/lint"],
 	"categories": {
 		"correctness": "warn"
 	},
@@ -38,7 +38,8 @@
 		".wrangler",
 		"**/.gitnexus",
 		"test-results/",
-		"**/.opencode/"
+		"**/.opencode/",
+		"**/*.svelte"
 	],
 	"rules": {
 		"svelte/comment-directive": "error",
@@ -77,7 +78,10 @@
 		"svelte/require-store-reactive-access": "error",
 		"svelte/system": "error",
 		"svelte/valid-each-key": "error",
-		"svelte/valid-prop-names-in-kit-pages": "error"
+		"svelte/valid-prop-names-in-kit-pages": "error",
+		"shadcn/no-arbitrary-values": "error",
+		"shadcn/no-raw-colors": "error",
+		"shadcn/no-inline-styles": "error"
 	},
 	"overrides": [
 		{

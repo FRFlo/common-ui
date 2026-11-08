@@ -16,7 +16,7 @@ bun run dev
 ```bash
 bun run fmt             # formatage du projet
 bun run fmt:check       # vérification du formatage
-bun run lint            # lint strict (avertissements interdits)
+bun run lint            # lint strict Svelte et Tailwind (avertissements interdits)
 bun run check           # vérification Svelte et TypeScript
 bun run build:registry  # génération du registre dans static/r
 bun run build           # génération du registre et du site statique
@@ -73,3 +73,5 @@ Composez les unités selon vos données ; le filtrage, le tri et le formatage de
 ```
 
 `Root` fournit le défilement horizontal et la liste ; `Item`, `Title` et `Description` constituent chaque étape. `Connector` affiche une ligne, une transition nommée ou une ligne finale. Les couleurs utilisent les variables Tailwind sémantiques `background`, `foreground`, `primary`, `border` et `muted-foreground` du projet hôte.
+
+Le lint Tailwind utilise `@shadcn/lint` pour interdire les valeurs arbitraires, les couleurs brutes et les styles en ligne. Les classes des templates Svelte sont vérifiées par ESLint.
