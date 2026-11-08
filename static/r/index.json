@@ -3,7 +3,10 @@
 		"name": "timeline",
 		"title": "Timeline",
 		"type": "registry:component",
-		"description": "Une frise chronologique horizontale composée d’éléments réutilisables.",
+		"description": "Une frise chronologique horizontale ou verticale composée d’éléments réutilisables.",
+		"dependencies": [
+			"cn"
+		],
 		"registryDependencies": [],
 		"relativeUrl": "timeline.json"
 	}

@@ -7,7 +7,7 @@
 			"name": "timeline",
 			"type": "registry:component",
 			"title": "Timeline",
-			"description": "Une frise chronologique horizontale composée d’éléments réutilisables.",
+			"description": "Une frise chronologique horizontale ou verticale composée d’éléments réutilisables.",
 			"files": [
 				{
 					"path": "src/lib/registry/components/timeline/timeline.svelte",
@@ -38,9 +38,25 @@
 					"path": "src/lib/registry/components/timeline/index.ts",
 					"type": "registry:component",
 					"target": "timeline/index.ts"
+				},
+				{
+					"path": "src/lib/registry/components/timeline/context.ts",
+					"type": "registry:component",
+					"target": "timeline/context.ts"
+				},
+				{
+					"path": "src/lib/registry/components/timeline/timeline-indicator.svelte",
+					"type": "registry:component",
+					"target": "timeline/timeline-indicator.svelte"
+				},
+				{
+					"path": "src/lib/registry/components/timeline/timeline-content.svelte",
+					"type": "registry:component",
+					"target": "timeline/timeline-content.svelte"
 				}
 			],
-			"registryDependencies": []
+			"registryDependencies": [],
+			"dependencies": ["cn"]
 		}
 	]
 }

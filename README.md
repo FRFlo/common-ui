@@ -58,20 +58,29 @@ Composez les unités selon vos données ; le filtrage, le tri et le formatage de
   import * as Timeline from "$lib/components/timeline";
 </script>
 
-<Timeline.Root aria-label="Prochains examens">
-  <Timeline.Item active><Timeline.Title active>Maintenant</Timeline.Title></Timeline.Item>
+<Timeline.Root orientation="vertical" aria-label="Prochains examens">
+  <Timeline.Item>
+    <Timeline.Indicator active aria-hidden="true" />
+    <Timeline.Content><Timeline.Title active>Maintenant</Timeline.Title></Timeline.Content>
+  </Timeline.Item>
   <Timeline.Connector />
   <Timeline.Item>
-    <Timeline.Title>Mathématiques</Timeline.Title>
-    <Timeline.Description>12 juin</Timeline.Description>
-    <Timeline.Description subtle>09:00 - 11:00</Timeline.Description>
+    <Timeline.Indicator aria-hidden="true" />
+    <Timeline.Content>
+      <Timeline.Title>Mathématiques</Timeline.Title>
+      <Timeline.Description>12 juin</Timeline.Description>
+      <Timeline.Description subtle>09:00 - 11:00</Timeline.Description>
+    </Timeline.Content>
   </Timeline.Item>
-  <Timeline.Connector transition label="Changement de période" />
-  <Timeline.Item><Timeline.Title>Physique</Timeline.Title></Timeline.Item>
-  <Timeline.Connector trailing />
+  <Timeline.Connector variant="transition" label="Changement de période" />
+  <Timeline.Item>
+    <Timeline.Indicator class="h-6 w-6">2</Timeline.Indicator>
+    <Timeline.Content><a href="/examens">Voir les examens</a></Timeline.Content>
+  </Timeline.Item>
+  <Timeline.Connector variant="trailing" />
 </Timeline.Root>
 ```
 
-`Root` fournit le défilement horizontal et la liste ; `Item`, `Title` et `Description` constituent chaque étape. `Connector` affiche une ligne, une transition nommée ou une ligne finale. Les couleurs utilisent les variables Tailwind sémantiques `background`, `foreground`, `primary`, `border` et `muted-foreground` du projet hôte.
+`Root` accepte `orientation="horizontal"` (par défaut) ou `"vertical"`. Composez chaque `Item` avec un `Indicator` et un `Content`, puis des titres, descriptions ou tout autre contenu. Les indicateurs décoratifs peuvent recevoir `aria-hidden="true"` ; laissez leur contenu accessible lorsqu’il porte du sens. `Connector` accepte les variantes `line` (par défaut), `transition` et `trailing` ; donnez un `label` aux transitions significatives. Chaque partie accepte `class` et les attributs HTML de son élément ; les classes Tailwind sont fusionnées avec `cn`. Les couleurs utilisent les variables sémantiques `background`, `foreground`, `primary`, `border` et `muted-foreground` du projet hôte.
 
 Le lint Tailwind utilise `@shadcn/lint` pour interdire les valeurs arbitraires, les couleurs brutes et les styles en ligne. Les classes des templates Svelte sont vérifiées par ESLint.

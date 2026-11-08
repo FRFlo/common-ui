@@ -1,21 +1,13 @@
 <script lang="ts">
 	import type { Snippet } from "svelte";
 	import type { HTMLLiAttributes } from "svelte/elements";
+	import { cn } from "cn";
+	import { getOrientation } from "./context";
 
-	let {
-		children,
-		active = false,
-		class: className = "",
-		...rest
-	}: HTMLLiAttributes & { children: Snippet; active?: boolean } = $props();
+	let { children, class: className, ...rest }: HTMLLiAttributes & { children: Snippet } = $props();
+	const orientation = getOrientation();
 </script>
 
-<li class="group relative flex w-32 shrink-0 flex-col items-center {className}" {...rest}>
-	<span
-		aria-hidden="true"
-		class="z-10 h-4 w-4 rounded-full shadow-sm ring-4 ring-background transition-colors duration-300 {active
-			? 'bg-primary'
-			: 'bg-muted-foreground/30 group-hover:bg-primary'}"
-	></span>
-	<div class="mt-3 flex flex-col items-center text-center">{@render children()}</div>
+<li class={cn("group relative flex shrink-0", orientation() === "horizontal" ? "w-32 flex-col items-center" : "w-full flex-row items-start gap-3", className)} {...rest}>
+	{@render children()}
 </li>

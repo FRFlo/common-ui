@@ -56,28 +56,14 @@
 					<a href="https://github.com/FRFlo/common-ui#timeline">Documentation ↗</a>
 				</div>
 				<Timeline.Root aria-label="Prochains examens">
-					<Timeline.Item active class="w-24"
-						><Timeline.Title active>Maintenant</Timeline.Title></Timeline.Item
-					>
+					<Timeline.Item class="w-24"><Timeline.Indicator active aria-hidden="true" /><Timeline.Content><Timeline.Title active>Maintenant</Timeline.Title></Timeline.Content></Timeline.Item>
 					<Timeline.Connector />
-					<Timeline.Item
-						><Timeline.Title>Mathématiques</Timeline.Title><Timeline.Description
-							>12 juin</Timeline.Description
-						><Timeline.Description subtle>09:00 - 11:00 (2h)</Timeline.Description></Timeline.Item
-					>
+					<Timeline.Item><Timeline.Indicator aria-hidden="true" /><Timeline.Content><Timeline.Title>Mathématiques</Timeline.Title><Timeline.Description>12 juin</Timeline.Description><Timeline.Description subtle>09:00 - 11:00 (2h)</Timeline.Description></Timeline.Content></Timeline.Item>
 					<Timeline.Connector />
-					<Timeline.Item
-						><Timeline.Title>Physique</Timeline.Title><Timeline.Description
-							>15 juin</Timeline.Description
-						><Timeline.Description subtle>14:00 - 15:30 (1h30)</Timeline.Description></Timeline.Item
-					>
-					<Timeline.Connector transition label="Changement vers la période suivante" />
-					<Timeline.Item
-						><Timeline.Title>Informatique</Timeline.Title><Timeline.Description
-							>22 juin</Timeline.Description
-						><Timeline.Description subtle>10:00 - 12:00 (2h)</Timeline.Description></Timeline.Item
-					>
-					<Timeline.Connector trailing />
+					<Timeline.Item><Timeline.Indicator aria-hidden="true" /><Timeline.Content><Timeline.Title>Physique</Timeline.Title><Timeline.Description>15 juin</Timeline.Description><Timeline.Description subtle>14:00 - 15:30 (1h30)</Timeline.Description></Timeline.Content></Timeline.Item>
+					<Timeline.Connector variant="transition" label="Changement vers la période suivante" />
+					<Timeline.Item><Timeline.Indicator aria-hidden="true" /><Timeline.Content><Timeline.Title>Informatique</Timeline.Title><Timeline.Description>22 juin</Timeline.Description><Timeline.Description subtle>10:00 - 12:00 (2h)</Timeline.Description></Timeline.Content></Timeline.Item>
+					<Timeline.Connector variant="trailing" />
 				</Timeline.Root>
 			</div>
 		</section>
