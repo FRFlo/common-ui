@@ -7,11 +7,14 @@
 	<meta name="description" content="Une collection de composants Svelte pour vos projets." />
 </svelte:head>
 
-<main class="catalogue" aria-label="Collection de composants">
-	<section class="component" aria-labelledby="timeline-title">
-		<h1 id="timeline-title">Timeline</h1>
-		<h2>Horizontale</h2>
-		<div class="preview">
+<main
+	class="flex min-h-screen flex-col bg-background px-6 pb-6 text-foreground scheme-light [--surface:white] [--ink:var(--color-ink)] [--accent:var(--color-crimson)] [--outline:var(--color-burgundy)] [--muted:var(--color-ink)] dark:scheme-dark dark:[--surface:var(--color-ink)] dark:[--ink:var(--color-gold-light)] dark:[--accent:var(--color-gold)] dark:[--outline:var(--color-gold)] dark:[--muted:var(--color-gold-light)]"
+	aria-label="Collection de composants"
+>
+	<section class="border-b border-border/30 py-6" aria-labelledby="timeline-title">
+		<h1 id="timeline-title" class="font-serif text-3xl tracking-tight text-primary sm:text-4xl">Timeline</h1>
+		<h2 class="mt-6 mb-3 text-sm font-medium">Horizontale</h2>
+		<div class="w-full max-w-3xl overflow-hidden rounded-xl border border-border/30 bg-background">
 			<Timeline.Root aria-label="Prochains examens">
 				<Timeline.Item class="w-24"><Timeline.Indicator active aria-hidden="true" /><Timeline.Content><Timeline.Title active>Maintenant</Timeline.Title></Timeline.Content></Timeline.Item>
 				<Timeline.Connector />
@@ -24,8 +27,8 @@
 			</Timeline.Root>
 		</div>
 
-		<h2>Verticale</h2>
-		<div class="preview vertical-preview">
+		<h2 class="mt-6 mb-3 text-sm font-medium">Verticale</h2>
+		<div class="w-full max-w-xs overflow-hidden rounded-xl border border-border/30 bg-background">
 			<Timeline.Root orientation="vertical" aria-label="Étapes du projet">
 				<Timeline.Item><Timeline.Indicator active aria-hidden="true" /><Timeline.Content><Timeline.Title active>En cours</Timeline.Title></Timeline.Content></Timeline.Item>
 				<Timeline.Connector />
@@ -34,8 +37,8 @@
 		</div>
 	</section>
 
-	<footer class="footer" aria-label="Liens utiles">
-		<a href="https://github.com/FRFlo/common-ui#timeline">Documentation <span aria-hidden="true">↗</span></a>
-		<a href="https://github.com/FRFlo/common-ui">GitHub <span aria-hidden="true">↗</span></a>
+	<footer class="mt-auto flex flex-wrap items-center justify-end gap-4 pt-6 text-sm" aria-label="Liens utiles">
+		<a class="text-primary hover:underline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary" href="https://github.com/FRFlo/common-ui#timeline">Documentation <span aria-hidden="true">↗</span></a>
+		<a class="hover:text-primary hover:underline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary" href="https://github.com/FRFlo/common-ui">GitHub <span aria-hidden="true">↗</span></a>
 	</footer>
 </main>
