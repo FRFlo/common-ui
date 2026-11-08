@@ -3,7 +3,7 @@
 	"name": "timeline",
 	"title": "Timeline",
 	"type": "registry:component",
-	"description": "Une frise chronologique horizontale ou verticale composée d’éléments réutilisables.",
+	"description": "Une frise chronologique horizontale composée d’éléments réutilisables.",
 	"dependencies": [
 		"cn"
 	],
@@ -12,17 +12,17 @@
 	],
 	"files": [
 		{
-			"content": "<script lang=\"ts\">\n\timport { setContext, type Snippet } from \"svelte\";\n\timport type { HTMLOlAttributes } from \"svelte/elements\";\n\timport { cn } from \"cn\";\n\timport { timelineContext, type Orientation } from \"./context\";\n\n\tlet { children, orientation = \"horizontal\", class: className, ...rest }: HTMLOlAttributes & {\n\t\tchildren: Snippet;\n\t\torientation?: Orientation;\n\t} = $props();\n\tsetContext(timelineContext, () => orientation);\n</script>\n\n<ol\n\tclass={cn(\"flex w-full list-none p-0\", orientation === \"horizontal\" ? \"items-start overflow-x-auto px-6 pt-6 pb-8\" : \"flex-col items-stretch px-6 py-6\", className)}\n\tdata-orientation={orientation}\n\t{...rest}\n>\n\t{@render children()}\n</ol>\n",
+			"content": "<script lang=\"ts\">\n\timport type { Snippet } from \"svelte\";\n\timport type { HTMLOlAttributes } from \"svelte/elements\";\n\timport { cn } from \"cn\";\n\n\tlet { children, class: className, ...rest }: HTMLOlAttributes & {\n\t\tchildren: Snippet;\n\t} = $props();\n</script>\n\n<ol\n\tclass={cn(\"flex w-full list-none items-start overflow-x-auto p-0 px-6 pt-6 pb-8\", className)}\n\t{...rest}\n>\n\t{@render children()}\n</ol>\n",
 			"type": "registry:component",
 			"target": "timeline/timeline.svelte"
 		},
 		{
-			"content": "<script lang=\"ts\">\n\timport type { Snippet } from \"svelte\";\n\timport type { HTMLLiAttributes } from \"svelte/elements\";\n\timport { cn } from \"cn\";\n\timport { getOrientation } from \"./context\";\n\n\tlet { children, class: className, ...rest }: HTMLLiAttributes & { children: Snippet } = $props();\n\tconst orientation = getOrientation();\n</script>\n\n<li class={cn(\"group relative flex shrink-0\", orientation() === \"horizontal\" ? \"w-32 flex-col items-center\" : \"w-full flex-row items-start gap-3\", className)} {...rest}>\n\t{@render children()}\n</li>\n",
+			"content": "<script lang=\"ts\">\n\timport type { Snippet } from \"svelte\";\n\timport type { HTMLLiAttributes } from \"svelte/elements\";\n\timport { cn } from \"cn\";\n\n\tlet { children, class: className, ...rest }: HTMLLiAttributes & { children: Snippet } = $props();\n</script>\n\n<li class={cn(\"group relative flex w-32 shrink-0 flex-col items-center\", className)} {...rest}>\n\t{@render children()}\n</li>\n",
 			"type": "registry:component",
 			"target": "timeline/timeline-item.svelte"
 		},
 		{
-			"content": "<script lang=\"ts\">\n\timport type { HTMLLiAttributes } from \"svelte/elements\";\n\timport { cn } from \"cn\";\n\timport { getOrientation } from \"./context\";\n\n\tlet { variant = \"line\", label, class: className, ...rest }: HTMLLiAttributes & { variant?: \"line\" | \"transition\" | \"trailing\"; label?: string } = $props();\n\tconst orientation = getOrientation();\n</script>\n\n{#if variant === \"transition\"}\n\t<li class={cn(\"flex shrink-0 items-center justify-center\", orientation() === \"horizontal\" ? \"min-h-20 min-w-16 flex-1 self-stretch\" : \"min-h-8 w-4\", className)} {...rest}>\n\t\t<span role=\"separator\" aria-label={label} aria-orientation={orientation() === \"horizontal\" ? \"vertical\" : \"horizontal\"} class={cn(\"block rounded-full bg-border\", orientation() === \"horizontal\" ? \"h-full w-0.5\" : \"h-0.5 w-4\")}></span>\n\t</li>\n{:else}\n\t<li aria-hidden=\"true\" class={cn(\"shrink-0\", orientation() === \"horizontal\" ? \"mt-2 h-0.5 min-w-16 flex-1\" : \"ml-2 min-h-8 w-0.5\", variant === \"trailing\" ? (orientation() === \"horizontal\" ? \"bg-gradient-to-r from-border to-transparent\" : \"bg-gradient-to-b from-border to-transparent\") : \"bg-border\", className)} {...rest}></li>\n{/if}\n",
+			"content": "<script lang=\"ts\">\n\timport type { HTMLLiAttributes } from \"svelte/elements\";\n\timport { cn } from \"cn\";\n\n\tlet { variant = \"line\", label, class: className, ...rest }: HTMLLiAttributes & { variant?: \"line\" | \"transition\" | \"trailing\"; label?: string } = $props();\n</script>\n\n{#if variant === \"transition\"}\n\t<li class={cn(\"flex min-h-20 min-w-16 shrink-0 flex-1 items-center justify-center self-stretch\", className)} {...rest}>\n\t\t<span role=\"separator\" aria-label={label} aria-orientation=\"vertical\" class=\"block h-full w-0.5 rounded-full bg-border\"></span>\n\t</li>\n{:else}\n\t<li aria-hidden=\"true\" class={cn(\"mt-2 h-0.5 min-w-16 shrink-0 flex-1\", variant === \"trailing\" ? \"bg-gradient-to-r from-border to-transparent\" : \"bg-border\", className)} {...rest}></li>\n{/if}\n",
 			"type": "registry:component",
 			"target": "timeline/timeline-connector.svelte"
 		},
@@ -42,17 +42,12 @@
 			"target": "timeline/index.ts"
 		},
 		{
-			"content": "import { getContext } from \"svelte\";\n\nexport type Orientation = \"horizontal\" | \"vertical\";\nexport const timelineContext = \"common-ui:timeline\";\n\nexport function getOrientation(): () => Orientation {\n\treturn getContext<(() => Orientation) | undefined>(timelineContext) ?? (() => \"horizontal\");\n}\n",
-			"type": "registry:component",
-			"target": "timeline/context.ts"
-		},
-		{
 			"content": "<script lang=\"ts\">\n\timport type { Snippet } from \"svelte\";\n\timport type { HTMLAttributes } from \"svelte/elements\";\n\timport { cn } from \"cn\";\n\n\tlet { children, active = false, class: className, ...rest }: HTMLAttributes<HTMLSpanElement> & { children?: Snippet; active?: boolean } = $props();\n</script>\n\n<span class={cn(\"z-10 flex h-4 w-4 shrink-0 items-center justify-center rounded-full shadow-sm ring-4 ring-background transition-colors duration-300\", active ? \"bg-primary\" : \"bg-muted-foreground/30 group-hover:bg-primary\", className)} {...rest}>\n\t{#if children}{@render children()}{/if}\n</span>\n",
 			"type": "registry:component",
 			"target": "timeline/timeline-indicator.svelte"
 		},
 		{
-			"content": "<script lang=\"ts\">\n\timport type { Snippet } from \"svelte\";\n\timport type { HTMLAttributes } from \"svelte/elements\";\n\timport { cn } from \"cn\";\n\timport { getOrientation } from \"./context\";\n\n\tlet { children, class: className, ...rest }: HTMLAttributes<HTMLDivElement> & { children: Snippet } = $props();\n\tconst orientation = getOrientation();\n</script>\n\n<div class={cn(\"flex flex-col\", orientation() === \"horizontal\" ? \"mt-3 items-center text-center\" : \"items-start text-left\", className)} {...rest}>{@render children()}</div>\n",
+			"content": "<script lang=\"ts\">\n\timport type { Snippet } from \"svelte\";\n\timport type { HTMLAttributes } from \"svelte/elements\";\n\timport { cn } from \"cn\";\n\n\tlet { children, class: className, ...rest }: HTMLAttributes<HTMLDivElement> & { children: Snippet } = $props();\n</script>\n\n<div class={cn(\"mt-3 flex flex-col items-center text-center\", className)} {...rest}>{@render children()}</div>\n",
 			"type": "registry:component",
 			"target": "timeline/timeline-content.svelte"
 		}

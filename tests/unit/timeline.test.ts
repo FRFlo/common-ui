@@ -1,4 +1,4 @@
-import { fireEvent, render, screen } from "@testing-library/svelte";
+import { render, screen } from "@testing-library/svelte";
 import { describe, expect, it } from "vitest";
 import TimelineFixture from "./TimelineFixture.svelte";
 import StandaloneFixture from "./StandaloneFixture.svelte";
@@ -6,10 +6,7 @@ import StandaloneFixture from "./StandaloneFixture.svelte";
 describe("Timeline", () => {
 	it("compose les étapes et transmet les attributs et classes personnalisées", () => {
 		render(TimelineFixture);
-		expect(screen.getByRole("list", { name: "Étapes" })).toHaveAttribute(
-			"data-orientation",
-			"horizontal",
-		);
+		expect(screen.getByRole("list", { name: "Étapes" })).toHaveClass("overflow-x-auto");
 		expect(screen.getByTestId("root")).toHaveClass("px-2");
 		expect(screen.getByTestId("root")).not.toHaveClass("px-6");
 		expect(screen.getByTestId("item")).toHaveClass("w-24");
@@ -39,23 +36,7 @@ describe("Timeline", () => {
 		);
 	});
 
-	it("adapte toutes les parties lorsque l’orientation change", async () => {
-		render(TimelineFixture);
-		await fireEvent.click(screen.getByRole("button", { name: "Changer" }));
-		expect(screen.getByTestId("root")).toHaveAttribute("data-orientation", "vertical");
-		expect(screen.getByTestId("item")).toHaveClass("flex-row");
-		expect(screen.getByTestId("content")).toHaveClass("text-left");
-		expect(screen.getByTestId("line")).toHaveClass("min-h-8");
-		expect(screen.getByTestId("trailing")).toHaveClass("bg-gradient-to-b");
-		expect(screen.getByRole("separator")).toHaveAttribute("aria-orientation", "horizontal");
-		await fireEvent.click(screen.getByRole("button", { name: "Changer" }));
-		expect(screen.getByTestId("root")).toHaveAttribute("data-orientation", "horizontal");
-	});
-
-	it("accepte une orientation verticale initiale et fonctionne sans racine", () => {
-		const { unmount } = render(TimelineFixture, { initialOrientation: "vertical" });
-		expect(screen.getByTestId("root")).toHaveAttribute("data-orientation", "vertical");
-		unmount();
+	it("fonctionne sans racine et conserve la disposition horizontale", () => {
 		render(StandaloneFixture);
 		expect(screen.getByTestId("item")).toHaveClass("flex-col");
 		expect(screen.getByTestId("content")).toHaveClass("text-center");
