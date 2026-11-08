@@ -28,3 +28,20 @@ test("la frise reste consultable sur petit écran", async ({ page }) => {
 	expect(await timeline.evaluate((el) => el.scrollLeft)).toBeGreaterThan(0);
 	await expect(timeline.getByText("Informatique")).toBeInViewport();
 });
+
+test("le thème suit les changements du système", async ({ page }) => {
+	await page.emulateMedia({ colorScheme: "light" });
+	await page.goto("/");
+	await page.evaluate(() => localStorage.setItem("common-ui-theme", "light"));
+	await expect(page.locator("html")).toHaveCSS("color-scheme", "light");
+	await expect(page.locator("html")).toHaveCSS("background-color", "rgb(255, 255, 255)");
+
+	await page.emulateMedia({ colorScheme: "dark" });
+	await expect(page.locator("html")).toHaveCSS("color-scheme", "dark");
+	await expect(page.locator("html")).toHaveCSS("background-color", "rgb(24, 26, 24)");
+	await page.reload();
+	await expect(page.locator("html")).toHaveCSS("color-scheme", "dark");
+
+	await page.emulateMedia({ colorScheme: "light" });
+	await expect(page.locator("html")).toHaveCSS("color-scheme", "light");
+});

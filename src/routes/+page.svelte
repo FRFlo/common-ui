@@ -1,5 +1,6 @@
 <script lang="ts">
 	import * as Timeline from "../lib/registry/components/timeline/index";
+
 </script>
 
 <svelte:head>
