@@ -40,11 +40,6 @@
 					"target": "timeline/index.ts"
 				},
 				{
-					"path": "src/lib/registry/components/timeline/context.ts",
-					"type": "registry:component",
-					"target": "timeline/context.ts"
-				},
-				{
 					"path": "src/lib/registry/components/timeline/timeline-indicator.svelte",
 					"type": "registry:component",
 					"target": "timeline/timeline-indicator.svelte"
