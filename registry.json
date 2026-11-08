@@ -2,5 +2,45 @@
   "$schema": "https://shadcn-svelte.com/schema/registry.json",
   "name": "common-ui",
   "homepage": "https://ui.frflo.ovh",
-  "items": []
+  "items": [
+    {
+      "name": "timeline",
+      "type": "registry:component",
+      "title": "Timeline",
+      "description": "Une frise chronologique horizontale composée d’éléments réutilisables.",
+      "files": [
+        {
+          "path": "src/lib/registry/components/timeline/timeline.svelte",
+          "type": "registry:component",
+          "target": "timeline/timeline.svelte"
+        },
+        {
+          "path": "src/lib/registry/components/timeline/timeline-item.svelte",
+          "type": "registry:component",
+          "target": "timeline/timeline-item.svelte"
+        },
+        {
+          "path": "src/lib/registry/components/timeline/timeline-connector.svelte",
+          "type": "registry:component",
+          "target": "timeline/timeline-connector.svelte"
+        },
+        {
+          "path": "src/lib/registry/components/timeline/timeline-title.svelte",
+          "type": "registry:component",
+          "target": "timeline/timeline-title.svelte"
+        },
+        {
+          "path": "src/lib/registry/components/timeline/timeline-description.svelte",
+          "type": "registry:component",
+          "target": "timeline/timeline-description.svelte"
+        },
+        {
+          "path": "src/lib/registry/components/timeline/index.ts",
+          "type": "registry:component",
+          "target": "timeline/index.ts"
+        }
+      ],
+      "registryDependencies": []
+    }
+  ]
 }

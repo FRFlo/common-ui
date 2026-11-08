@@ -1,1 +1,10 @@
-[]
+[
+	{
+		"name": "timeline",
+		"title": "Timeline",
+		"type": "registry:component",
+		"description": "Une frise chronologique horizontale composée d’éléments réutilisables.",
+		"registryDependencies": [],
+		"relativeUrl": "timeline.json"
+	}
+]

@@ -39,3 +39,16 @@ h2 { margin: 10px 0 0; font-size: clamp(26px, 3vw, 34px); letter-spacing: -.05em
 .footer { min-height: 82px; border-top: 1px solid #e8eae4; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
 .footer > span:first-child { color: #3d443a; font-weight: 600; }
 @media (max-width: 640px) { .shell { width: calc(100% - 36px); } .header { height: 72px; } .hero { padding: 82px 0 90px; } .intro { font-size: 16px; } .section-heading { align-items: start; flex-direction: column; } .principles { grid-template-columns: 1fr; gap: 32px; padding: 60px 0 70px; } .footer { padding: 24px 0; align-items: start; flex-direction: column; gap: 12px; } }
+
+@theme inline {
+  --color-background: #fff;
+  --color-foreground: #20221e;
+  --color-primary: #68845d;
+  --color-border: #e3e7df;
+  --color-muted-foreground: #727970;
+}
+.timeline-demo { margin-top: 30px; overflow: hidden; border: 1px solid #e3e7df; border-radius: 14px; background: white; }
+.timeline-heading { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px; padding: 22px 24px; border-bottom: 1px solid #e3e7df; }
+.timeline-heading h3 { margin: 0; font-size: 16px; font-weight: 600; }
+.timeline-heading p { margin: 7px 0 0; color: #858c83; font-size: 13px; }
+.timeline-heading a { color: #68845d; font-size: 13px; font-weight: 600; }

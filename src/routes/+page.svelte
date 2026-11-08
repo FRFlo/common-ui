@@ -1,3 +1,7 @@
+<script lang="ts">
+  import * as Timeline from '../lib/registry/components/timeline/index';
+</script>
+
 <svelte:head>
   <title>Common UI — composants Svelte</title>
   <meta name="description" content="Une collection de composants Svelte conçus pour s’adapter au thème de vos projets." />
@@ -21,10 +25,19 @@
     </section>
 
     <section class="collection" id="collection" aria-labelledby="collection-title">
-      <div class="section-heading"><div><span class="section-label">LA COLLECTION</span><h2 id="collection-title">À construire ensemble.</h2></div><span class="count">00 / COMPOSANTS</span></div>
-      <div class="empty-state">
-        <div class="empty-icon" aria-hidden="true"><span>+</span></div>
-        <div><h3>Tout commence ici.</h3><p>La collection est encore vide. Les prochains composants prendront place ici au fil du projet.</p></div>
+      <div class="section-heading"><div><span class="section-label">LA COLLECTION</span><h2 id="collection-title">Timeline.</h2></div><span class="count">01 / COMPOSANT</span></div>
+      <div class="timeline-demo">
+        <div class="timeline-heading"><div><h3>Prochains examens</h3><p>Un exemple de frise horizontale, inspiré de Naurio.</p></div><a href="https://github.com/FRFlo/common-ui#timeline">Documentation ↗</a></div>
+        <Timeline.Root aria-label="Prochains examens">
+          <Timeline.Item active class="w-24"><Timeline.Title active>Maintenant</Timeline.Title></Timeline.Item>
+          <Timeline.Connector />
+          <Timeline.Item><Timeline.Title>Mathématiques</Timeline.Title><Timeline.Description>12 juin</Timeline.Description><Timeline.Description subtle>09:00 - 11:00 (2h)</Timeline.Description></Timeline.Item>
+          <Timeline.Connector />
+          <Timeline.Item><Timeline.Title>Physique</Timeline.Title><Timeline.Description>15 juin</Timeline.Description><Timeline.Description subtle>14:00 - 15:30 (1h30)</Timeline.Description></Timeline.Item>
+          <Timeline.Connector transition label="Changement vers la période suivante" />
+          <Timeline.Item><Timeline.Title>Informatique</Timeline.Title><Timeline.Description>22 juin</Timeline.Description><Timeline.Description subtle>10:00 - 12:00 (2h)</Timeline.Description></Timeline.Item>
+          <Timeline.Connector trailing />
+        </Timeline.Root>
       </div>
     </section>
     <section class="principles" aria-label="Principes de la bibliothèque">

@@ -2,7 +2,7 @@
 
 Un registre public pour créer des composants Svelte complexes et adapter ceux de shadcn-svelte aux besoins de nos projets. Les composants sont installés avec shadcn-svelte et utilisent les variables Tailwind CSS du projet qui les accueille.
 
-La collection est actuellement vide. Le projet fournit la structure nécessaire pour créer les premiers composants et les publier sur [ui.frflo.ovh](https://ui.frflo.ovh).
+La collection comprend une timeline horizontale. Les composants sont publiés sur [ui.frflo.ovh](https://ui.frflo.ovh).
 
 ## Développer
 
@@ -39,3 +39,34 @@ bun run deploy
 La commande construit le site et le registre, puis les publie sur le Worker configuré dans `wrangler.jsonc`. Pour déployer automatiquement à chaque push, connectez le dépôt à Cloudflare Workers Builds : commande de build `bun install --frozen-lockfile && bun run build`, commande de déploiement `bunx wrangler deploy`. Le workflow GitHub sert aux vérifications uniquement.
 
 Licence MIT : voir [LICENSE](LICENSE).
+
+## Timeline
+
+Installez le composant dans un projet configuré avec shadcn-svelte :
+
+```bash
+bunx shadcn-svelte@latest add https://ui.frflo.ovh/r/timeline.json
+```
+
+Composez les unités selon vos données ; le filtrage, le tri et le formatage des dates restent à la charge de l’application :
+
+```svelte
+<script lang="ts">
+  import * as Timeline from "$lib/components/timeline";
+</script>
+
+<Timeline.Root aria-label="Prochains examens">
+  <Timeline.Item active><Timeline.Title active>Maintenant</Timeline.Title></Timeline.Item>
+  <Timeline.Connector />
+  <Timeline.Item>
+    <Timeline.Title>Mathématiques</Timeline.Title>
+    <Timeline.Description>12 juin</Timeline.Description>
+    <Timeline.Description subtle>09:00 - 11:00</Timeline.Description>
+  </Timeline.Item>
+  <Timeline.Connector transition label="Changement de période" />
+  <Timeline.Item><Timeline.Title>Physique</Timeline.Title></Timeline.Item>
+  <Timeline.Connector trailing />
+</Timeline.Root>
+```
+
+`Root` fournit le défilement horizontal et la liste ; `Item`, `Title` et `Description` constituent chaque étape. `Connector` affiche une ligne, une transition nommée ou une ligne finale. Les couleurs utilisent les variables Tailwind sémantiques `background`, `foreground`, `primary`, `border` et `muted-foreground` du projet hôte.
