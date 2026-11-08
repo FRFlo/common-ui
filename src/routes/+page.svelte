@@ -30,9 +30,9 @@
 		<h2 class="mt-6 mb-3 text-sm font-medium">Verticale</h2>
 		<div class="w-full max-w-xs overflow-hidden rounded-xl border border-border/30 bg-background">
 			<Timeline.Root orientation="vertical" aria-label="Étapes du projet">
-				<Timeline.Item><Timeline.Indicator active aria-hidden="true" /><Timeline.Content><Timeline.Title active>En cours</Timeline.Title></Timeline.Content></Timeline.Item>
+				<Timeline.Item><Timeline.Indicator active aria-hidden="true" /><Timeline.Content><Timeline.Title active>En cours</Timeline.Title><Timeline.Description>La phase actuelle du projet</Timeline.Description></Timeline.Content></Timeline.Item>
 				<Timeline.Connector />
-				<Timeline.Item><Timeline.Indicator aria-hidden="true" /><Timeline.Content><Timeline.Title>À venir</Timeline.Title></Timeline.Content></Timeline.Item>
+				<Timeline.Item><Timeline.Indicator aria-hidden="true" /><Timeline.Content><Timeline.Title>À venir</Timeline.Title><Timeline.Description>Prochaine étape à réaliser</Timeline.Description></Timeline.Content></Timeline.Item>
 			</Timeline.Root>
 		</div>
 	</section>
