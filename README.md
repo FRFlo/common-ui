@@ -18,9 +18,14 @@ bun run fmt             # formatage du projet
 bun run fmt:check       # vérification du formatage
 bun run lint            # lint strict Svelte et Tailwind (avertissements interdits)
 bun run check           # vérification Svelte et TypeScript
+bun run test            # tests des composants avec Vitest
+bun run test:coverage   # tests et couverture
+bun run test:e2e        # tests Chromium (après build)
 bun run build:registry  # génération du registre dans static/r
 bun run build           # génération du registre et du site statique
 ```
+
+Pour les tests navigateur, installez Chromium une fois avec `bunx playwright install chromium`, puis lancez `bun run build` et `bun run test:e2e`.
 
 ## Ajouter un composant
 
