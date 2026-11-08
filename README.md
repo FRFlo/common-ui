@@ -14,6 +14,9 @@ bun run dev
 ```
 
 ```bash
+bun run fmt             # formatage du projet
+bun run fmt:check       # vérification du formatage
+bun run lint            # lint strict (avertissements interdits)
 bun run check           # vérification Svelte et TypeScript
 bun run build:registry  # génération du registre dans static/r
 bun run build           # génération du registre et du site statique

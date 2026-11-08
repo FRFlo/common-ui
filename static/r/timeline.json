@@ -6,32 +6,32 @@
 	"description": "Une frise chronologique horizontale composée d’éléments réutilisables.",
 	"files": [
 		{
-			"content": "<script lang=\"ts\">\n\timport type { Snippet } from 'svelte';\n\timport type { HTMLAttributes } from 'svelte/elements';\n\n\tlet { children, class: className = '', ...rest }: HTMLAttributes<HTMLDivElement> & { children: Snippet } = $props();\n</script>\n\n<div class=\"w-full overflow-x-auto pb-8 pt-6 {className}\" {...rest}>\n\t<ol class=\"flex min-w-full items-start px-6\">\n\t\t{@render children()}\n\t</ol>\n</div>\n",
+			"content": "<script lang=\"ts\">\n\timport type { Snippet } from \"svelte\";\n\timport type { HTMLAttributes } from \"svelte/elements\";\n\n\tlet {\n\t\tchildren,\n\t\tclass: className = \"\",\n\t\t...rest\n\t}: HTMLAttributes<HTMLDivElement> & { children: Snippet } = $props();\n</script>\n\n<div class=\"w-full overflow-x-auto pt-6 pb-8 {className}\" {...rest}>\n\t<ol class=\"flex min-w-full items-start px-6\">\n\t\t{@render children()}\n\t</ol>\n</div>\n",
 			"type": "registry:component",
 			"target": "timeline/timeline.svelte"
 		},
 		{
-			"content": "<script lang=\"ts\">\n\timport type { Snippet } from 'svelte';\n\timport type { HTMLLiAttributes } from 'svelte/elements';\n\n\tlet { children, active = false, class: className = '', ...rest }: HTMLLiAttributes & { children: Snippet; active?: boolean } = $props();\n</script>\n\n<li class=\"group relative flex w-32 shrink-0 flex-col items-center {className}\" {...rest}>\n\t<span aria-hidden=\"true\" class=\"z-10 h-4 w-4 rounded-full ring-4 ring-background shadow-sm transition-colors duration-300 {active ? 'bg-primary' : 'bg-muted-foreground/30 group-hover:bg-primary'}\"></span>\n\t<div class=\"mt-3 flex flex-col items-center text-center\">{@render children()}</div>\n</li>\n",
+			"content": "<script lang=\"ts\">\n\timport type { Snippet } from \"svelte\";\n\timport type { HTMLLiAttributes } from \"svelte/elements\";\n\n\tlet {\n\t\tchildren,\n\t\tactive = false,\n\t\tclass: className = \"\",\n\t\t...rest\n\t}: HTMLLiAttributes & { children: Snippet; active?: boolean } = $props();\n</script>\n\n<li class=\"group relative flex w-32 shrink-0 flex-col items-center {className}\" {...rest}>\n\t<span\n\t\taria-hidden=\"true\"\n\t\tclass=\"z-10 h-4 w-4 rounded-full shadow-sm ring-4 ring-background transition-colors duration-300 {active\n\t\t\t? 'bg-primary'\n\t\t\t: 'bg-muted-foreground/30 group-hover:bg-primary'}\"\n\t></span>\n\t<div class=\"mt-3 flex flex-col items-center text-center\">{@render children()}</div>\n</li>\n",
 			"type": "registry:component",
 			"target": "timeline/timeline-item.svelte"
 		},
 		{
-			"content": "<script lang=\"ts\">\n\tlet { transition = false, label, trailing = false }: { transition?: boolean; label?: string; trailing?: boolean } = $props();\n</script>\n\n{#if transition}\n\t<li class=\"flex min-h-20 min-w-16 flex-1 self-stretch items-center justify-center\" role=\"separator\" aria-label={label}>\n\t\t<span class=\"block h-full w-0.5 rounded-full bg-border\" title={label}></span>\n\t</li>\n{:else if trailing}\n\t<li aria-hidden=\"true\" class=\"mt-2 flex h-0.5 min-w-8 flex-1 bg-border\"><span class=\"ml-auto h-0.5 w-16 translate-x-full bg-gradient-to-r from-border to-transparent\"></span></li>\n{:else}\n\t<li aria-hidden=\"true\" class=\"mt-2 h-0.5 min-w-16 flex-1 bg-border\"></li>\n{/if}\n",
+			"content": "<script lang=\"ts\">\n\tlet {\n\t\ttransition = false,\n\t\tlabel,\n\t\ttrailing = false,\n\t}: { transition?: boolean; label?: string; trailing?: boolean } = $props();\n</script>\n\n{#if transition}\n\t<li\n\t\tclass=\"flex min-h-20 min-w-16 flex-1 items-center justify-center self-stretch\"\n\t\trole=\"separator\"\n\t\taria-label={label}\n\t>\n\t\t<span class=\"block h-full w-0.5 rounded-full bg-border\" title={label}></span>\n\t</li>\n{:else if trailing}\n\t<li aria-hidden=\"true\" class=\"mt-2 flex h-0.5 min-w-8 flex-1 bg-border\">\n\t\t<span class=\"ml-auto h-0.5 w-16 translate-x-full bg-gradient-to-r from-border to-transparent\"\n\t\t></span>\n\t</li>\n{:else}\n\t<li aria-hidden=\"true\" class=\"mt-2 h-0.5 min-w-16 flex-1 bg-border\"></li>\n{/if}\n",
 			"type": "registry:component",
 			"target": "timeline/timeline-connector.svelte"
 		},
 		{
-			"content": "<script lang=\"ts\">\n\timport type { Snippet } from 'svelte';\n\tlet { children, active = false }: { children: Snippet; active?: boolean } = $props();\n</script>\n\n<span class=\"line-clamp-2 px-2 text-sm {active ? 'font-semibold text-primary' : 'font-medium text-foreground'}\">{@render children()}</span>\n",
+			"content": "<script lang=\"ts\">\n\timport type { Snippet } from \"svelte\";\n\tlet { children, active = false }: { children: Snippet; active?: boolean } = $props();\n</script>\n\n<span\n\tclass=\"line-clamp-2 px-2 text-sm {active\n\t\t? 'font-semibold text-primary'\n\t\t: 'font-medium text-foreground'}\">{@render children()}</span\n>\n",
 			"type": "registry:component",
 			"target": "timeline/timeline-title.svelte"
 		},
 		{
-			"content": "<script lang=\"ts\">\n\timport type { Snippet } from 'svelte';\n\tlet { children, subtle = false }: { children: Snippet; subtle?: boolean } = $props();\n</script>\n\n<span class={subtle ? 'mt-0.5 text-[10px] text-muted-foreground/70' : 'mt-1 text-xs font-medium text-muted-foreground'}>{@render children()}</span>\n",
+			"content": "<script lang=\"ts\">\n\timport type { Snippet } from \"svelte\";\n\tlet { children, subtle = false }: { children: Snippet; subtle?: boolean } = $props();\n</script>\n\n<span\n\tclass={subtle\n\t\t? \"mt-0.5 text-[10px] text-muted-foreground/70\"\n\t\t: \"mt-1 text-xs font-medium text-muted-foreground\"}>{@render children()}</span\n>\n",
 			"type": "registry:component",
 			"target": "timeline/timeline-description.svelte"
 		},
 		{
-			"content": "export { default as Root } from './timeline.svelte';\nexport { default as Item } from './timeline-item.svelte';\nexport { default as Connector } from './timeline-connector.svelte';\nexport { default as Title } from './timeline-title.svelte';\nexport { default as Description } from './timeline-description.svelte';\n",
+			"content": "export { default as Root } from \"./timeline.svelte\";\nexport { default as Item } from \"./timeline-item.svelte\";\nexport { default as Connector } from \"./timeline-connector.svelte\";\nexport { default as Title } from \"./timeline-title.svelte\";\nexport { default as Description } from \"./timeline-description.svelte\";\n",
 			"type": "registry:component",
 			"target": "timeline/index.ts"
 		}
