@@ -30,9 +30,14 @@
 		<h2 class="mt-6 mb-3 text-sm font-medium">Verticale</h2>
 		<div class="w-full max-w-xs overflow-hidden rounded-xl border border-border/30 bg-background">
 			<Timeline.Root orientation="vertical" aria-label="Étapes du projet">
-				<Timeline.Item><Timeline.Indicator active aria-hidden="true" /><Timeline.Content><Timeline.Title active>En cours</Timeline.Title><Timeline.Description>La phase actuelle du projet</Timeline.Description></Timeline.Content></Timeline.Item>
+				<Timeline.Item><Timeline.Indicator active aria-hidden="true" /><Timeline.Content><Timeline.Title active>Maintenant</Timeline.Title></Timeline.Content></Timeline.Item>
 				<Timeline.Connector />
-				<Timeline.Item><Timeline.Indicator aria-hidden="true" /><Timeline.Content><Timeline.Title>À venir</Timeline.Title><Timeline.Description>Prochaine étape à réaliser</Timeline.Description></Timeline.Content></Timeline.Item>
+				<Timeline.Item><Timeline.Indicator aria-hidden="true" /><Timeline.Content><Timeline.Title>Mathématiques</Timeline.Title><Timeline.Description>12 juin</Timeline.Description><Timeline.Description subtle>09:00 - 11:00 (2h)</Timeline.Description></Timeline.Content></Timeline.Item>
+				<Timeline.Connector />
+				<Timeline.Item><Timeline.Indicator aria-hidden="true" /><Timeline.Content><Timeline.Title>Physique</Timeline.Title><Timeline.Description>15 juin</Timeline.Description><Timeline.Description subtle>14:00 - 15:30 (1h30)</Timeline.Description></Timeline.Content></Timeline.Item>
+				<Timeline.Connector variant="transition" label="Changement vers la période suivante" />
+				<Timeline.Item><Timeline.Indicator aria-hidden="true" /><Timeline.Content><Timeline.Title>Informatique</Timeline.Title><Timeline.Description>22 juin</Timeline.Description><Timeline.Description subtle>10:00 - 12:00 (2h)</Timeline.Description></Timeline.Content></Timeline.Item>
+				<Timeline.Connector variant="trailing" />
 			</Timeline.Root>
 		</div>
 	</section>
