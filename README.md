@@ -44,7 +44,7 @@ bunx wrangler login
 bun run deploy
 ```
 
-La commande construit le site et le registre, puis les publie sur le Worker configuré dans `wrangler.jsonc`. Pour déployer automatiquement à chaque push, connectez le dépôt à Cloudflare Workers Builds : commande de build `bun install --frozen-lockfile && bun run build`, commande de déploiement `bunx wrangler deploy`. Le workflow GitHub sert aux vérifications uniquement.
+La commande construit le site et le registre, puis les publie sur le Worker configuré dans `wrangler.jsonc`. Pour déployer automatiquement à chaque push, connectez le dépôt à Cloudflare Workers Builds : commande de build `bun install --frozen-lockfile && bun run fmt:check && bun run lint && bun run check && bun run test:coverage && bun run build`, commande de déploiement `bunx wrangler deploy`. Cette commande de build doit être configurée dans Cloudflare Workers Builds. Les tests Playwright nécessitent également Chromium et ses dépendances système : exécutez `bunx playwright install chromium && bun run test:e2e` dans un environnement qui les fournit.
 
 Licence MIT : voir [LICENSE](LICENSE).
 
