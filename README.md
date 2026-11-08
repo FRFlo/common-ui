@@ -36,6 +36,6 @@ bunx wrangler login
 bun run deploy
 ```
 
-La commande construit le site et le registre, puis les publie sur le Worker configuré dans `wrangler.jsonc`. Pour déployer automatiquement à chaque push, connectez le dépôt à Cloudflare Workers Builds : commande de build `bun install --frozen-lockfile && bun run build`, commande de déploiement `bunx wrangler deploy`. Le workflow GitHub sert aux vérifications uniquement.
+La commande construit le site et le registre, puis les publie sur le Worker configuré dans `wrangler.jsonc`. Pour déployer automatiquement à chaque push, connectez le dépôt à Cloudflare Workers Builds : commande de build `bun install --frozen-lockfile && bun run check && bun run build`, commande de déploiement `bunx wrangler deploy`.
 
 Licence MIT : voir [LICENSE](LICENSE).
