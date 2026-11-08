@@ -1,13 +1,8 @@
 <script lang="ts">
-	import { untrack } from "svelte";
 	import * as Timeline from "../../src/lib/registry/components/timeline/index";
-	import type { Orientation } from "../../src/lib/registry/components/timeline/context";
-	let { initialOrientation = "horizontal" }: { initialOrientation?: Orientation } = $props();
-	let orientation = $state(untrack(() => initialOrientation));
 </script>
 
-<button onclick={() => orientation = orientation === "horizontal" ? "vertical" : "horizontal"}>Changer</button>
-<Timeline.Root {orientation} aria-label="Étapes" class="px-2" data-testid="root">
+<Timeline.Root aria-label="Étapes" class="px-2" data-testid="root">
 	<Timeline.Item class="w-24" data-testid="item">
 		<Timeline.Indicator active class="h-6 w-6" data-testid="indicator">1</Timeline.Indicator>
 		<Timeline.Content class="gap-2" data-testid="content">

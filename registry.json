@@ -7,7 +7,7 @@
 			"name": "timeline",
 			"type": "registry:component",
 			"title": "Timeline",
-			"description": "Une frise chronologique horizontale ou verticale composée d’éléments réutilisables.",
+			"description": "Une frise chronologique horizontale composée d’éléments réutilisables.",
 			"files": [
 				{
 					"path": "src/lib/registry/components/timeline/timeline.svelte",
