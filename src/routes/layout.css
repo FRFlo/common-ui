@@ -1,17 +1,52 @@
 @import "tailwindcss";
 
 @theme {
-	--color-crimson: #c1121f;
-	--color-burgundy: #780000;
-	--color-gold: #d4af37;
-	--color-gold-light: #f6d365;
-	--color-ink: #0b0f14;
-}
+	/* Core red-and-gold palette */
+	--color-crimson-50: #fff1f1;
+	--color-crimson-100: #ffe0e0;
+	--color-crimson-200: #ffc7c7;
+	--color-crimson-300: #ffa0a0;
+	--color-crimson-400: #ff6b6b;
+	--color-crimson-500: #e63946;
+	--color-crimson-600: #c1121f;
+	--color-crimson-700: #a30e19;
+	--color-crimson-800: #780000;
+	--color-crimson-900: #520008;
+	--color-gold-50: #fffbea;
+	--color-gold-100: #fff3c4;
+	--color-gold-200: #ffe68a;
+	--color-gold-300: #f6d365;
+	--color-gold-400: #e6bd42;
+	--color-gold-500: #d4af37;
+	--color-gold-600: #a98516;
+	--color-gold-700: #80620d;
+	--color-gold-800: #5c470b;
+	--color-gold-900: #392c08;
 
-@theme inline {
+	/* Semantic colors used by components */
 	--color-background: var(--surface);
 	--color-foreground: var(--ink);
 	--color-primary: var(--accent);
 	--color-border: var(--outline);
 	--color-muted-foreground: var(--muted);
+}
+
+:root {
+	color-scheme: light;
+	--surface: #ffffff;
+	--ink: #0b0f14;
+	--accent: var(--color-crimson-600);
+	--outline: var(--color-gold-600);
+	--muted: #392c08;
+}
+
+@media (prefers-color-scheme: dark) {
+	:root {
+		color-scheme: dark;
+		--surface: #0b0f14;
+		--ink: #fff3c4;
+		--accent: var(--color-crimson-300);
+		--outline: var(--color-gold-400);
+		--muted: #ffe68a;
+	}
 }

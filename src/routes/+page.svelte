@@ -8,7 +8,7 @@
 </svelte:head>
 
 <main
-	class="flex min-h-screen flex-col bg-background px-6 pb-6 text-foreground scheme-light [--surface:white] [--ink:var(--color-ink)] [--accent:var(--color-crimson)] [--outline:var(--color-burgundy)] [--muted:var(--color-ink)] dark:scheme-dark dark:[--surface:var(--color-ink)] dark:[--ink:var(--color-gold-light)] dark:[--accent:#ff6b6b] dark:[--outline:var(--color-gold)] dark:[--muted:var(--color-gold-light)]"
+	class="flex min-h-screen flex-col bg-background px-6 pb-6 text-foreground"
 	aria-label="Collection de composants"
 >
 	<section class="border-b border-border/30 py-6" aria-labelledby="timeline-title">
