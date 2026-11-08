@@ -3,7 +3,7 @@
 @theme {
 	--color-background: #ffffff;
 	--color-foreground: #444444;
-	--color-primary: #0645ad;
+	--color-primary: #c1121f;
 	--color-border: #cccccc;
 	--color-muted-foreground: #555555;
 }
@@ -18,5 +18,5 @@ body {
 	margin: 0;
 	background: #ffffff;
 	color: #444444;
-	font-family: Georgia, "Times New Roman", serif;
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
 }
