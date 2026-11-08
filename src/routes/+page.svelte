@@ -8,13 +8,13 @@
 </svelte:head>
 
 <main
-	class="flex min-h-screen flex-col bg-background px-6 pb-6 text-foreground"
+	class="mx-auto flex min-h-screen w-full max-w-[650px] flex-col bg-background px-3 pb-6 text-foreground"
 	aria-label="Collection de composants"
 >
-	<section class="border-b border-border/30 py-6" aria-labelledby="timeline-title">
+	<section class="py-6" aria-labelledby="timeline-title">
 		<h1 id="timeline-title" class="font-serif text-3xl tracking-tight text-primary sm:text-4xl">Timeline</h1>
 		<h2 class="mt-6 mb-3 text-sm font-medium">Horizontale</h2>
-		<div class="w-full max-w-3xl overflow-hidden rounded-xl border border-border/30 bg-background">
+		<div class="w-full max-w-3xl overflow-hidden border border-border bg-background">
 			<Timeline.Root aria-label="Prochains examens">
 				<Timeline.Item class="w-24"><Timeline.Indicator active aria-hidden="true" /><Timeline.Content><Timeline.Title active>Maintenant</Timeline.Title></Timeline.Content></Timeline.Item>
 				<Timeline.Connector />
